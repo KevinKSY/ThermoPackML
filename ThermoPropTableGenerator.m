@@ -10,9 +10,9 @@
 % By Kevin Koosup Yum on 20 January 2017
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-pRange = (1:1:250)' * 1e5;      %Range of pressure in Pa
-TRange = (275:10:3000)';        %Range of temperature in K
-FRange = (0:0.01:1.2)';         %Range of fuel-air equivalence ratio
+pRange = (1:10:250)' * 1e5;      %Range of pressure in Pa
+TRange = (275:100:3000)';        %Range of temperature in K
+FRange = (0:0.1:1.2)';         %Range of fuel-air equivalence ratio
 fs = 0.0683;
 
 %% Generate the tables 
@@ -79,8 +79,8 @@ title(['Reasonable pressure and temperature combination at v > ' num2str(vLL) ' 
 idx = find(tableRhsu(:,8)<vHL & tableRhsu(:,8)>vLL);
 tableRhsuNew = tableRhsu(idx,:);
 
-fid = fopen('tableRhsu.csv','w');
-fprintf(fid, 'p,T,F,R,h,s,u,v \n');
+fid = fopen('tableRhsuSmall.csv','w');
+fprintf(fid, 'p,T,F,R,h,s,u,v\n');
 fprintf(fid, '%1.5e,%1.5e,%1.5e,%1.5e,%1.5e,%1.5e,%1.5e,%1.5e \n', tableRhsuNew');
 fclose(fid);
 
